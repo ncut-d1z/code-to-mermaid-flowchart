@@ -17,7 +17,7 @@ description: Generate, audit, and synchronize Mermaid algorithm flowcharts from 
 1. Read [code-tracing.md](references/code-tracing.md). Trace actual entry points, dispatch, calls, branches, loops, returns and exception handlers. Build node/edge-to-code evidence before drawing. Code controls execution truth; papers control notation only.
 2. Read [variant-analysis.md](references/variant-analysis.md). Build a difference matrix and decide which paths can share a diagram. Resolve runtime dispatch where possible; explicitly label unresolved paths and static-only analysis.
 3. If mathematics or a paper is involved, read [math-notation.md](references/math-notation.md). Define meanings before symbols and keep paper definitions distinct from implementation names. Do not invent missing notation.
-4. Read [mermaid-style.md](references/mermaid-style.md). Produce concise `flowchart TD` diagrams with explicit conditions, loop updates, terminal statuses and double-bordered subroutine calls. Keep explanations outside diagrams.
+4. Read [mermaid-style.md](references/mermaid-style.md). Produce concise `flowchart TD` diagrams with explicit conditions, loop updates, terminal statuses and double-bordered calls only for real code subroutines. Do not invent helper calls to share inline blocks. Keep explanations outside diagrams.
 5. For synchronization, compare the recorded baseline to the target commit, retrace affected callers and variants, and update evidence as well as diagrams. Do not assume a small code diff implies a small control-flow change.
 6. For requested web integration or visual acceptance, read [browser-acceptance.md](references/browser-acceptance.md). Reuse existing rendering and test infrastructure; verify pinned versions in a real browser and inspect downloaded artifacts. Otherwise do not add UI or export functionality.
 7. Read [deliverables.md](references/deliverables.md). Deliver sources, provenance, variant/notation tables and an evidence-based acceptance report. Run the bundled provenance validator when using its JSON contract; it checks evidence structure, not semantic correctness or Mermaid syntax.
@@ -25,6 +25,7 @@ description: Generate, audit, and synchronize Mermaid algorithm flowcharts from 
 ## Resources and validation
 
 - `python scripts/validate-trace.py trace.json --root /path/to/repository`: verify referenced files, actual line ranges, node IDs, edge IDs, source hashes and commit provenance; exits 0 PASS, 1 FAIL, 2 BLOCKED. See the contract in [code-tracing.md](references/code-tracing.md).
+- Run `python scripts/test-trace.py` for isolated validator regression checks (requires Python 3 and Git; temporary fixtures only).
 - Use the target project's actual Mermaid parser/renderer for syntax. Never substitute regular expressions or the provenance validator for parser execution.
 - Use [browser-acceptance.md](references/browser-acceptance.md) for project-specific real-browser and export tests; do not fabricate universal selectors or stub scripts.
 - Use [application-example.md](references/application-example.md) only for the optional Spherical-Flow case study; it is not a default repository or authorization to modify it.

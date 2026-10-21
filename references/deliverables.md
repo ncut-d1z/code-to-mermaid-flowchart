@@ -5,3 +5,5 @@ Provide editable Mermaid sources; algorithm-to-diagram index; node/edge source e
 For each acceptance item use PASS, FAIL, BLOCKED or NOT APPLICABLE. State static-only analysis, unresolved dispatch, inaccessible paper sections and missing browser/tool prerequisites. Separate parser success from source fidelity and export correctness. Report remaining failures without suggesting full completion.
 
 In read-only audit mode, return findings and proposed changes without editing source or diagrams. Do not commit/push by default. Do not alter algorithm logic, persisted results, dependency versions or unrelated UI in documentation tasks. Follow explicit user authorization for publication and repository actions.
+
+Use only the four defined status values. Map a required but unexecuted check to BLOCKED and explain why; map out-of-scope checks to NOT APPLICABLE. Do not add ambiguous NOT RUN/PENDING statuses that conceal whether acceptance is required.
