@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code to Mermaid Flowchart"
+  short_description: "Trace code into verified Mermaid algorithm flowcharts"
+  default_prompt: "Use $code-to-mermaid-flowchart to trace this repository and produce verified algorithm flowcharts."
